@@ -44,9 +44,10 @@ body {
 }
 
 .logo-img {
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
+    width: 200px;
+    height: auto;
+    fill: white;
+    color: white; /* For the SVG currentColor */
 }
 
 .nav-items {
