@@ -39,14 +39,37 @@ body {
 }
 
 .logo {
-    padding: 20px;
+    padding: 30px 20px;
     text-align: center;
+    background-color: #2d2d2d;
+}
+
+.logo-text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+}
+
+.logo-pirate,
+.logo-ship {
+    color: white;
+    font-size: 28px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    line-height: 1;
+}
+
+.logo-ship {
+    font-size: 32px;
 }
 
 .logo-img {
     width: 200px;
     height: auto;
-    filter: brightness(0) invert(1); /* This will make black logo white */
+    display: block;
+    margin: 0 auto;
+    filter: brightness(0) invert(1);
 }
 
 .nav-items {
