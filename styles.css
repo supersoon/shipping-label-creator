@@ -46,8 +46,7 @@ body {
 .logo-img {
     width: 200px;
     height: auto;
-    fill: white;
-    color: white; /* For the SVG currentColor */
+    filter: brightness(0) invert(1); /* This will make black logo white */
 }
 
 .nav-items {
