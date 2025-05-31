@@ -1,0 +1,427 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+body {
+    background-color: #f5f5f5;
+}
+
+/* SVG Icon Styles */
+.icon {
+    width: 24px;
+    height: 24px;
+    fill: currentColor;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.icon-large {
+    width: 80px;
+    height: 80px;
+}
+
+.container {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* Sidebar Styles */
+.sidebar {
+    width: 250px;
+    background-color: #2d2d2d;
+    color: white;
+    padding: 20px 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.logo {
+    padding: 20px;
+    text-align: center;
+}
+
+.logo-img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+}
+
+.nav-items {
+    list-style: none;
+    margin-top: 20px;
+}
+
+.nav-items li {
+    padding: 15px 30px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    color: white;
+}
+
+.nav-items li:hover {
+    background-color: #3d3d3d;
+}
+
+.nav-items .icon {
+    color: white;
+}
+
+.collapse-btn {
+    margin-top: auto;
+    padding: 15px 30px;
+    color: #888;
+    cursor: pointer;
+}
+
+/* Main Content Styles */
+.main-content {
+    flex: 1;
+    padding: 40px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+h1 {
+    font-size: 24px;
+    margin-bottom: 30px;
+    color: #333;
+}
+
+.shipping-form {
+    background-color: white;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    font-size: 18px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.paste-address {
+    color: #0066cc;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.form-group.full-width {
+    grid-column: 1 / -1;
+}
+
+input, select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.address-grid {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 10px;
+}
+
+.rubber-stamps {
+    margin: 20px 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.hint {
+    color: #666;
+    font-size: 14px;
+}
+
+.ship-from-section, .package-section {
+    margin: 30px 0;
+}
+
+.address-preview, .package-size {
+    color: #666;
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+.modify-package {
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.get-rates-btn {
+    width: 100%;
+    padding: 15px;
+    background-color: #2ea44f;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+.get-rates-btn:hover {
+    background-color: #2c974b;
+}
+
+input[type="checkbox"] {
+    width: auto;
+    margin-right: 5px;
+}
+
+select.full-width {
+    width: 100%;
+}
+
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.modal.show {
+    display: flex;
+    opacity: 1;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-content {
+    background-color: white;
+    border-radius: 8px;
+    width: 90%;
+    max-width: 600px;
+    position: relative;
+    transform: scale(0.7);
+    transition: transform 0.3s ease;
+}
+
+.modal.show .modal-content {
+    transform: scale(1);
+}
+
+.modal-header {
+    padding: 20px 24px;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.modal-header h1 {
+    margin: 0;
+    font-size: 24px;
+    color: #333;
+}
+
+.close-modal {
+    background: none;
+    border: none;
+    padding: 8px;
+    cursor: pointer;
+    color: #666;
+    border-radius: 4px;
+}
+
+.close-modal:hover {
+    background-color: #f5f5f5;
+    color: #333;
+}
+
+.modal-body {
+    padding: 24px;
+}
+
+.modal-body h2 {
+    color: #333;
+    font-size: 18px;
+    margin-bottom: 12px;
+}
+
+.shipping-info {
+    color: #666;
+    font-size: 14px;
+    line-height: 1.5;
+    margin-bottom: 24px;
+}
+
+.rates-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 24px;
+}
+
+.rates-table th,
+.rates-table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+}
+
+.rates-table th {
+    font-weight: 600;
+    color: #333;
+    background-color: #f9f9f9;
+}
+
+.rates-table td {
+    color: #666;
+}
+
+.modal-footer {
+    padding: 16px 24px;
+    border-top: 1px solid #eee;
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+}
+
+.btn {
+    padding: 10px 20px;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn-ghost {
+    background: none;
+    border: 1px solid #ddd;
+    color: #666;
+}
+
+.btn-ghost:hover {
+    background-color: #f5f5f5;
+    border-color: #ccc;
+}
+
+/* Button base styles */
+.btn-primary {
+    background-color: #2ea44f;
+    border: 1px solid #2ea44f;
+    color: white;
+    position: relative;
+    overflow: hidden;
+    min-width: 140px; /* Ensure consistent width */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-primary .button-text {
+    position: relative;
+    z-index: 2;
+    transition: color 0.3s ease;
+}
+
+.icon-check {
+    position: absolute;
+    right: 10px;
+    width: 18px;
+    height: 18px;
+    opacity: 0;
+    transform: scale(0);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    fill: currentColor;
+    z-index: 2;
+}
+
+.fill-animation {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background-color: #2c974b;
+    transition: width 8s ease-in-out, background-color 0.3s ease;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.btn-primary.filling {
+    background-color: #9e9e9e; /* Lighter grey background */
+    border-color: #9e9e9e;
+}
+
+.btn-primary.filling .fill-animation {
+    width: 100%; /* This was missing! Adding it back to make the animation work */
+    background-color: #212121; /* Much darker grey for filling */
+}
+
+.btn-primary.filling:hover .fill-animation {
+    background-color: #212121; /* Keep same dark color on hover */
+}
+
+.btn-primary.success {
+    background-color: #2ea44f;
+    cursor: default;
+}
+
+.btn-primary.success .icon-check {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* Undo state styles */
+.btn-primary.undo {
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    background-color: #9e9e9e;
+    border-color: #9e9e9e;
+}
+
+.btn-primary.undo .button-text {
+    color: #fff;
+}
+
+.btn-primary.undo:hover {
+    background-color: #ff8a80;  /* Lighter red */
+    border-color: #ff8a80;
+}
+
+.btn-primary.undo:hover .fill-animation {
+    background-color: #b71c1c;  /* Much darker red */
+}
+
+/* Remove transition when canceling */
+.btn-primary.canceling .fill-animation {
+    transition: none !important;
+    width: 0 !important;
+}
+
+/* Only disable pointer events when successful */
+.btn-primary.success {
+    pointer-events: none;
+    background-color: #2ea44f;
+    border-color: #2ea44f;
+} 

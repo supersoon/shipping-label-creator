@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create a Shipping Label</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Embed SVG sprites directly -->
+    <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+        <symbol id="logo" viewBox="0 0 24 24">
+            <path d="M20 8h-3V4H3c-1.1 0-2 .9-2 2v11h2c0 1.66 1.34 3 3 3s3-1.34 3-3h6c0 1.66 1.34 3 3 3s3-1.34 3-3h2v-5l-3-4zM6 18.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm13.5-9l1.96 2.5H17V9.5h2.5zm-1.5 9c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/>
+        </symbol>
+        <symbol id="ship" viewBox="0 0 24 24">
+            <path d="M20 19.5c0-1.1-.9-2-2-2s-2 .9-2 2 .9 2 2 2 2-.9 2-2zm-8-12c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h1c0 1.1.9 2 2 2s2-.9 2-2h8c0 1.1.9 2 2 2s2-.9 2-2h1c1.1 0 2-.9 2-2v-3l-3-4z"/>
+        </symbol>
+        <symbol id="rates" viewBox="0 0 24 24">
+            <path d="M11.8 10.9c-2.27-.59-3-1.2-3-2.15 0-1.09 1.01-1.85 2.7-1.85 1.78 0 2.44.85 2.5 2.1h2.21c-.07-1.72-1.12-3.3-3.21-3.81V3h-3v2.16c-1.94.42-3.5 1.68-3.5 3.61 0 2.31 1.91 3.46 4.7 4.13 2.5.6 3 1.48 3 2.41 0 .69-.49 1.79-2.7 1.79-2.06 0-2.87-.92-2.98-2.1h-2.2c.12 2.19 1.76 3.42 3.68 3.83V21h3v-2.15c1.95-.37 3.5-1.5 3.5-3.55 0-2.84-2.43-3.81-4.7-4.4z"/>
+        </symbol>
+        <symbol id="reports" viewBox="0 0 24 24">
+            <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/>
+        </symbol>
+        <symbol id="settings" viewBox="0 0 24 24">
+            <path d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58c.18-.14.23-.41.12-.61l-1.92-3.32c-.12-.22-.37-.29-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54c-.04-.24-.24-.41-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.09.63-.09.94s.02.64.07.94l-2.03 1.58c-.18.14-.23.41-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z"/>
+        </symbol>
+        <symbol id="support" viewBox="0 0 24 24">
+            <path d="M11 18h2v-2h-2v2zm1-16C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm0-14c-2.21 0-4 1.79-4 4h2c0-1.1.9-2 2-2s2 .9 2 2c0 2-3 1.75-3 5h2c0-2.25 3-2.5 3-5 0-2.21-1.79-4-4-4z"/>
+        </symbol>
+        <symbol id="logout" viewBox="0 0 24 24">
+            <path d="M17 7l-1.41 1.41L18.17 11H8v2h10.17l-2.58 2.58L17 17l5-5zM4 5h8V3H4c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h8v-2H4V5z"/>
+        </symbol>
+        <symbol id="close" viewBox="0 0 24 24">
+            <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+        </symbol>
+        <symbol id="checkmark" viewBox="0 0 24 24">
+            <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+        </symbol>
+    </svg>
+    
+    <div class="container">
+        <nav class="sidebar">
+            <div class="logo">
+                <svg class="icon icon-large"><use xlink:href="#logo"></use></svg>
+            </div>
+            <ul class="nav-items">
+                <li><svg class="icon"><use xlink:href="#ship"></use></svg> Ship</li>
+                <li><svg class="icon"><use xlink:href="#rates"></use></svg> Rates</li>
+                <li><svg class="icon"><use xlink:href="#reports"></use></svg> Reports</li>
+                <li><svg class="icon"><use xlink:href="#settings"></use></svg> Settings</li>
+                <li><svg class="icon"><use xlink:href="#support"></use></svg> Support</li>
+                <li><svg class="icon"><use xlink:href="#logout"></use></svg> Logout</li>
+            </ul>
+            <div class="collapse-btn">
+                ← Collapse
+            </div>
+        </nav>
+        <main class="main-content">
+            <h1>Create a Shipping Label</h1>
+            <form class="shipping-form">
+                <div class="ship-to-section">
+                    <h2>Ship To <span class="paste-address">Paste Address</span></h2>
+                    <div class="form-grid">
+                        <div class="form-group full-width">
+                            <input type="email" placeholder="Email (optional)" value="blackbeard@queenannesrevenge.com">
+                        </div>
+                        <div class="form-group">
+                            <input type="tel" placeholder="Phone (optional)">
+                        </div>
+                        <div class="form-group full-width">
+                            <input type="text" placeholder="Name" value="Captain Blackbeard">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" placeholder="Company (optional)">
+                        </div>
+                        <div class="form-group full-width">
+                            <input type="text" placeholder="Address" value="111 Back Rd">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" placeholder="Apt / Unit / Suite / etc. (optional)">
+                        </div>
+                        <div class="address-grid">
+                            <input type="text" placeholder="City" value="Ocracoke">
+                            <input type="text" placeholder="State" value="NC">
+                            <input type="text" placeholder="Zipcode" value="27960">
+                        </div>
+                        <div class="form-group">
+                            <select>
+                                <option>United States</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="rubber-stamps">
+                    <input type="checkbox" id="rubber-stamps">
+                    <label for="rubber-stamps">Rubber Stamps</label>
+                    <span class="hint">Print extra information on the label (34 characters per field)</span>
+                </div>
+
+                <div class="ship-from-section">
+                    <h2>Ship From</h2>
+                    <select class="full-width">
+                        <option>Pirate Ship Office</option>
+                    </select>
+                    <div class="address-preview">Pirate Ship, PO Box 9149, Jackson WY 83002-9149</div>
+                </div>
+
+                <div class="package-section">
+                    <select class="full-width">
+                        <option>Small Box of Eyepatches</option>
+                    </select>
+                    <div class="package-size">8x6x4" - 14 oz</div>
+                    <div class="modify-package">
+                        <input type="checkbox" id="modify-package">
+                        <label for="modify-package">Modify package</label>
+                    </div>
+                </div>
+
+                <button type="button" class="get-rates-btn" id="getRatesBtn">Get Rates</button>
+            </form>
+        </main>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal" id="ratesModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1>Prices for your package</h1>
+                <button class="close-modal">
+                    <svg class="icon">
+                        <use xlink:href="#close"></use>
+                    </svg>
+                </button>
+            </div>
+            <div class="modal-body">
+                <h2>USPS Carrier package</h2>
+                <p class="shipping-info">
+                    Ship your package reliably with USPS. Includes tracking and insurance up to $50. 
+                    Estimated delivery time depends on the selected service level.
+                </p>
+                <table class="rates-table">
+                    <tr>
+                        <th>Service</th>
+                        <th>Delivery Time</th>
+                        <th>Price</th>
+                    </tr>
+                    <tr>
+                        <td>Priority Mail Express</td>
+                        <td>1-2 Business Days</td>
+                        <td>$26.35</td>
+                    </tr>
+                    <tr>
+                        <td>Priority Mail</td>
+                        <td>2-3 Business Days</td>
+                        <td>$13.45</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-ghost" id="cancelBtn">Cancel</button>
+                <button class="btn btn-primary" id="buyLabel">
+                    <span class="button-text">Buy Label</span>
+                    <svg class="icon icon-check"><use xlink:href="#checkmark"></use></svg>
+                    <div class="fill-animation"></div>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Modal functionality
+        const modal = document.getElementById('ratesModal');
+        const getRatesBtn = document.getElementById('getRatesBtn');
+        const closeBtn = document.querySelector('.close-modal');
+        const cancelBtn = document.getElementById('cancelBtn');
+        const buyBtn = document.getElementById('buyLabel');
+        const buyBtnText = buyBtn.querySelector('.button-text');
+        let closeTimeout;
+
+        function openModal() {
+            modal.classList.add('show');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            modal.classList.remove('show');
+            document.body.style.overflow = '';
+            resetButton();
+        }
+
+        function resetButton() {
+            buyBtn.classList.remove('filling', 'success', 'undo');
+            buyBtnText.textContent = 'Buy Label';
+            clearTimeout(closeTimeout);
+        }
+
+        function startPurchase() {
+            buyBtn.classList.add('filling');
+            buyBtnText.textContent = 'Undo Purchase';
+            buyBtn.classList.add('undo');
+            
+            closeTimeout = setTimeout(() => {
+                if (buyBtn.classList.contains('filling')) {
+                    completePurchase();
+                }
+            }, 8000);
+        }
+
+        function completePurchase() {
+            buyBtnText.textContent = 'Successful';
+            buyBtn.classList.add('success');
+            buyBtn.classList.remove('undo');
+            
+            setTimeout(() => {
+                closeModal();
+            }, 2000);
+        }
+
+        function undoPurchase() {
+            clearTimeout(closeTimeout);
+            // Add canceling class to prevent animation
+            buyBtn.classList.add('canceling');
+            // Force a reflow
+            buyBtn.offsetHeight;
+            // Remove all classes
+            buyBtn.classList.remove('filling', 'success', 'undo');
+            buyBtnText.textContent = 'Buy Label';
+            // Remove canceling class after a brief delay
+            setTimeout(() => {
+                buyBtn.classList.remove('canceling');
+            }, 100);
+        }
+
+        getRatesBtn.addEventListener('click', openModal);
+        closeBtn.addEventListener('click', closeModal);
+        cancelBtn.addEventListener('click', closeModal);
+
+        // Buy button with undo functionality
+        buyBtn.addEventListener('click', () => {
+            if (!buyBtn.classList.contains('filling') && !buyBtn.classList.contains('undo')) {
+                startPurchase();
+            } else if (buyBtn.classList.contains('undo')) {
+                undoPurchase();
+            }
+        });
+
+        // Close modal when clicking outside
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                closeModal();
+            }
+        });
+
+        // Close modal on escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && modal.classList.contains('show')) {
+                closeModal();
+            }
+        });
+    </script>
+</body>
+</html> 
