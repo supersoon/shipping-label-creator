@@ -15,13 +15,13 @@ A modern, interactive web interface for creating shipping labels with animated f
 
 ## Live Demo
 
-Visit the live demo at: [https://[your-github-username].github.io/shipping-label-creator/](https://[your-github-username].github.io/shipping-label-creator/)
+Visit the live demo at: [https://supersoon.github.io/shipping-label-creator/](https://supersoon.github.io/shipping-label-creator/)
 
 ## Local Development
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/[your-github-username]/shipping-label-creator.git
+git clone https://github.com/supersoon/shipping-label-creator.git
 ```
 
 2. Open `index.html` in your browser
